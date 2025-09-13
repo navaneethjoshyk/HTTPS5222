@@ -1,0 +1,59 @@
+extends layout
+
+block layout-content
+  //- HERO
+  section.hero
+    .container
+      .hero__content
+        h1 NovaNest
+        p.tagline= (site && site.tagline) || 'Clever home gadgets that just work.'
+        a.btn.btn--primary(href="#bestsellers") Shop Best Sellers
+
+  //- CATEGORIES
+  section.section#categories
+    .container
+      h2.section__title Shop by Category
+      .grid.grid--4
+        each cat in categories
+          a.card.card--category(href="/category/"+cat.slug)
+            //- Image source: https://images.unsplash.com/photo-1509395176047-4a66953fd231
+            img(src="/images/category-placeholder.jpg" alt=cat.label)
+            h3= cat.label
+
+  //- BEST SELLERS
+  section.section#bestsellers
+    .container
+      h2.section__title Best Sellers
+      .grid.grid--4
+        each p in products
+          .card.card--product
+            //- Below images are placeholders you can replace:
+            //- novalight.jpg source: https://images.unsplash.com/photo-1510557880182-3d4d3cba35b1
+            //- brewmate.jpg source: https://images.unsplash.com/photo-1511920170033-f8396924c348
+            //- airquiet.jpg source: https://images.unsplash.com/photo-1518972559570-7cc1309f3229
+            //- snapsale.jpg source: https://images.unsplash.com/photo-1519681393784-d120267933ba
+            img.card__img(src=p.img, alt=p.name)
+            .card__body
+              h3.card__title= p.name
+              p.card__desc= p.desc
+              .card__actions
+                span.price $#{p.price.toFixed(2)}
+                button.btn Add to cart
+
+  //- FEATURES
+  section.section.section--alt
+    .container
+      h2.section__title Why NovaNest?
+      .grid.grid--3
+        each f in features
+          .feature
+            h3.feature__title= f.title
+            p.feature__text= f.text
+
+  //- CTA
+  section.section
+    .container.center
+      h2 Ready to upgrade your home?
+      p Small changes add comfort every day. Discover hand-picked gadgets that solve real problems.
+      a.btn.btn--secondary(href="/about") Learn more
+
