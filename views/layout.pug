@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title #{title} | #{(site && site.name) || 'NovaNest'}
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com" crossorigin)
+    
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet")
+    link(rel="stylesheet", href="/css/styles.css")
+  body
+    header.header
+      .container.header__row
+        a.header__brand(href="/")= (site && site.name) || 'NovaNest'
+        nav.header__nav
+          ul
+            li: a(href="/") Home
+            li: a(href="/about") About
+            li: a(href="#categories") Categories
+            li: a(href="#bestsellers") Best Sellers
+
+    main
+      block layout-content
+
+    footer.footer
+      .container
+        p © #{new Date().getFullYear()} #{(site && site.name) || 'NovaNest'}. All rights reserved.
+        p.small Built with Node, Express, and Pug.
